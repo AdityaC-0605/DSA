@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Solution {
+public class Q_4sum {
     public static List<List<Integer>> fourSum(int[] nums, int target) {
         int n = nums.length;
         List<List<Integer>> ans = new ArrayList<>();

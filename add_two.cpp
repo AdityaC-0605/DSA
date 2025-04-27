@@ -1,4 +1,4 @@
-class Solution {
+class add_two {
     public:
         ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
             ListNode* node=new ListNode(0),*ans=node;

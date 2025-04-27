@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Solution {
+public class backspace_string_compare {
     public static boolean backspaceCompare(String s, String t) {
         return buildString(s).equals(buildString(t));
     }
