@@ -1,5 +1,8 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.util.Arrays;
 
 public class Q_4sum {
     public static List<List<Integer>> fourSum(int[] nums, int target) {
@@ -44,15 +47,34 @@ public class Q_4sum {
         
         // Get array input
         System.out.println("Enter integers separated by spaces:");
-        String[] input = scanner.nextLine().split(" ");
-        int[] nums = new int[input.length];
-        for (int i = 0; i < input.length; i++) {
-            nums[i] = Integer.parseInt(input[i]);
+        String[] input = scanner.nextLine().trim().split(" ");
+        List<Integer> numList = new ArrayList<>();
+        for (String s : input) {
+            if (!s.isEmpty()) {
+                try {
+                    numList.add(Integer.parseInt(s));
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input detected: '" + s + "' is not an integer. Skipping.");
+                }
+            }
         }
+        if (numList.size() == 0) {
+            System.out.println("No valid integers entered. Exiting.");
+            scanner.close();
+            return;
+        }
+        int[] nums = numList.stream().mapToInt(Integer::intValue).toArray();
         
         // Get target input
         System.out.println("Enter target sum:");
-        int target = scanner.nextInt();
+        int target;
+        try {
+            target = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid target input. Please enter an integer.");
+            scanner.close();
+            return;
+        }
         
         // Calculate and display results
         List<List<Integer>> result = fourSum(nums, target);
